@@ -79,18 +79,18 @@ WSGI_APPLICATION = 'TwitterLink.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
+    # 'default': dj_database_url.config(
+    #     default=config('DATABASE_URL')
+    # )
     ### Local Database ###
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': config('POSTGRES_DB_NAME'), 
-    #     'USER': config('POSTGRES_DB_USER'), 
-    #     'PASSWORD': config('POSTGRES_DB_PASSWORD'),
-    #     'HOST': config('POSTGRES_DB_HOST'), 
-    #     'PORT': config('POSTGRES_DB_PORT'),
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('POSTGRES_DB_NAME'), 
+        'USER': config('POSTGRES_DB_USER'), 
+        'PASSWORD': config('POSTGRES_DB_PASSWORD'),
+        'HOST': config('POSTGRES_DB_HOST'), 
+        'PORT': config('POSTGRES_DB_PORT'),
+    }
 }
 
 
