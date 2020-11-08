@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+    
+{% block content %}
+<div class="center">
+	<div style="width: 18rem;">
+		<div class="card-body">
+			<a href="{% url 'Link_Tweets' %}" class="btn btn-primary btn-block">Link Tweets</a>
+		</div>
+	</div>
+	<div style="width: 18rem;">
+		<div class="card-body">
+			<a href="{% url 'All_Tweets' %}" class="btn btn-primary btn-block">All Tweets</a>
+		</div>
+	</div>
+	<div style="width: 18rem;">
+		<div class="card-body">
+			<a href="{% url 'Top_User' %}" class="btn btn-primary btn-block">Top User</a>
+		</div>
+	</div>
+	<div style="width: 18rem;">
+		<div class="card-body">
+			<a href="{% url 'Top_Domain' %}" class="btn btn-primary btn-block">Top Domains</a>
+		</div>
+    </div>
+</div>
+{% endblock %}

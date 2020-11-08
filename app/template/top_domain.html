@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% if my_list %}
+		{% for t,c in my_list %}
+		<div class="col-md-100" style="padding:5px 0 5px 0">
+            <div class="card listing-preview">
+              <div class="card-body">
+                <div class="listing-heading text-center">
+                        <div style="font-weight:bolder">
+                            {{t}}
+                        </div>
+                        <div>
+                            <mark> Tweet count: {{c}}</mark>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+		{% endfor %}
+		{% else %}
+		<div class="col-md-12">
+            <p>No Domain</p>
+          </div>
+		{% endif %}
+{% endblock %}
+

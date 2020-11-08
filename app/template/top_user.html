@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    
+<div class="col-md-100 center" >
+    <div class="card listing-preview">
+        <div class="card-body">
+            <div class="listing-heading text-center">
+                <div class="avatar">
+                    <img src="{{user.profile_image_url}}">
+                </div>
+                <div style="font-weight:bold">
+                    {{user.name}}
+                    <br>
+                    @{{user.screen_name}}
+                </div>
+                <div>
+                    {{user.description}}
+            </div>
+                <div ><mark> Follower count: {{user.followers_count}}</mark></div>
+                <div ><mark> Statuses count {{user.statuses_count}}</mark></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

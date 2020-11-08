@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    
+    {% if my_list %}
+        {% for t in my_list %}
+        <div class="col-md-100" style="padding:5px 0 5px 0">
+            <div class="card listing-preview">
+              <div class="card-body">
+                <div class="listing-heading text-center">
+                    <div class="avatar">
+                        <img src="{{t.User.profile_image_url}}">
+                    </div>
+                  <div class="text-primary">{{ t.Text }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+    {% else %}
+        <div class="col-md-12">
+        <p>No Tweets</p>
+      </div>
+    {% endif %}
+{% endblock %}
