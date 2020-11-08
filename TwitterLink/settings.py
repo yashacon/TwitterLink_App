@@ -14,7 +14,7 @@ from decouple import config
 from pathlib import Path
 import dj_database_url
 import mimetypes
-
+import django_heroku
 
 mimetypes.add_type("text/css", ".css", True)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -136,3 +136,4 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'app/static/'),
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+django_heroku.settings(locals()) 
