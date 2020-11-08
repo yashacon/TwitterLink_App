@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from decouple import config
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 SECRET_KEY=config('SECRET_KEY')
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 # SECURITY WARNING: don't run with debug turned on in production!\
 
@@ -75,14 +76,18 @@ WSGI_APPLICATION = 'TwitterLink.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('POSTGRES_DB_NAME'), 
-        'USER': config('POSTGRES_DB_USER'), 
-        'PASSWORD': config('POSTGRES_DB_PASSWORD'),
-        'HOST': config('POSTGRES_DB_HOST'), 
-        'PORT': config('POSTGRES_DB_PORT'),
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+    ### Local Database ###
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': config('POSTGRES_DB_NAME'), 
+    #     'USER': config('POSTGRES_DB_USER'), 
+    #     'PASSWORD': config('POSTGRES_DB_PASSWORD'),
+    #     'HOST': config('POSTGRES_DB_HOST'), 
+    #     'PORT': config('POSTGRES_DB_PORT'),
+    # }
 }
 
 
