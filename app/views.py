@@ -127,7 +127,7 @@ class save_data():
                 return str[0:x]
 
     def insert_db(self,ttweet, url):
-        tweet = models.Tweets()
+        tweet = Tweets()
         tweet.id = str(ttweet.id) + str(ttweet.user.id)
         tweet.Name = ttweet.user.name
         tweet.User = ttweet.user.id
@@ -143,16 +143,16 @@ def link_twt(request):
         user = api.me()
         delta = date.today() - timedelta(days=7)
         my_list = []
-        for tweet in tweepy.Cursor(api.home_timeline, since_id=delta).items(100):
+        for tweet in tweepy.Cursor(api.home_timeline, since_id=delta).items(50):
             url = tweet.entities['urls']
-            if len(url) is not 0:
-                if url[0]['display_url'][0:7] is not 'twitter':
+            if len(url) != 0:
+                if url[0]['display_url'][:7] != 'twitter':
                     my_list.append(tweet)
                     try:
                         save_data().insert_db(tweet, url)
                     except:
+                        print('problem')
                         continue
-                    
         context={
             'my_list': my_list,
             'username': user.name
